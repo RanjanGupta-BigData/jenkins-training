@@ -29,7 +29,17 @@ For jenkins Java 8 is required.
           wget -O /etc/yum.repos.d/jenkins.repo http://pkg.jenkins-ci.org/redhat-stable/jenkins.repo  ## Add jenkins in yum repo
           rpm --import http://pkg.jenkins-ci.org/redhat-stable/jenkins-ci.org.key  ##download the key necessary for proper installation
           yum install jenkins  -y        ## install Jenkins
-          service jenkins start       ## Start Jenkins
+      
+## If you want to run Jenkins on port 80 
+
+          vim /etc/sysconfig/jenkins 
+          Find out the line JENKINS_PORT="8080"
+          Change it to 
+          JENKINS_PORT="80"
+
+## Start the Jenkins service
+      
+      service jenkins start       ## Start Jenkins
           chkconfig jenkins on        ## Check if Jenkins is working
           cat /var/lib/jenkins/secrets/initialAdminPassword           ## Get the initial admin password gor first login
                     ##use the content of file for initial admin password
